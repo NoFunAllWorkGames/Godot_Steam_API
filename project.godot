@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Godot_Steam_API"
+run/main_scene="uid://bgy6t02m5lmht"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[debug]
+
+file_logging/enable_file_logging=true
 
 [dotnet]
 
