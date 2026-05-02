@@ -6,6 +6,8 @@ var leaderboard_handles: Dictionary[StringName, int] = {
 	"AverageSpeed": 0
 	}
 
+# Need to connect to LeaderboardScoresDownloaded passing (Rank,Name,Score)
+var LeaderboardUserScore : PackedScene
 
 func _ready()-> void:
 	Steam.leaderboard_find_result.connect(_on_leaderboard_find_result)
