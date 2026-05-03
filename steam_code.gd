@@ -2,6 +2,8 @@ extends Node
 
 var app_id = 480
 
+signal steam_user_updated
+
 func _ready() -> void:
 	initialize_steam()
 
@@ -43,6 +45,9 @@ func initialize_steam() -> void:
 	print("Launch command line: %s" % launch_command_line)
 	print("Steam id: %s" % steam_id)
 	print("Steam username: %s" % steam_username)
+	emit_signal("steam_user_updated", steam_username)
 	print("UI language: %s" % ui_language)
 	print("=== END Steam Init END ====")
 	print("")
+	
+	
