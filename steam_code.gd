@@ -29,7 +29,8 @@ func initialize_steam() -> void:
 	var steam_username: String = Steam.getPersonaName()
 	var ui_language: String = Steam.getSteamUILanguage()
 
-	print("App installed depots: %s" % app_installed_depots)
+	print("=== Start Steam Init Start ====")
+	print("App installed depots: %s" % [app_installed_depots])
 	print("App languages: %s" % app_languages)
 	print("App owner: %s" % app_owner)
 	print("Build id: %s" % build_id)
@@ -43,3 +44,5 @@ func initialize_steam() -> void:
 	print("Steam id: %s" % steam_id)
 	print("Steam username: %s" % steam_username)
 	print("UI language: %s" % ui_language)
+	print("=== END Steam Init END ====")
+	print("")
