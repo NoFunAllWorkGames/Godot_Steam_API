@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dqbmpv2hq1tit"]
+
+[ext_resource type="Script" uid="uid://b68ewcp1qobpj" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control" unique_id=990598184]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=419698401]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1132.0
+offset_bottom = 628.0
+current_tab = 0
+
+[node name="DebugMenu" type="MarginContainer" parent="TabContainer" unique_id=1639630289]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/DebugMenu" unique_id=1288498788]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="Label" type="Label" parent="TabContainer/DebugMenu/GridContainer" unique_id=129548580]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label2" type="Label" parent="TabContainer/DebugMenu/GridContainer" unique_id=1790688134]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label3" type="Label" parent="TabContainer/DebugMenu/GridContainer" unique_id=1520459689]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label4" type="Label" parent="TabContainer/DebugMenu/GridContainer" unique_id=1774783134]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label5" type="Label" parent="TabContainer/DebugMenu/GridContainer" unique_id=104787811]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label6" type="Label" parent="TabContainer/DebugMenu/GridContainer" unique_id=478306258]
+layout_mode = 2
+text = "TEST"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
