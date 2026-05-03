@@ -3,7 +3,8 @@ extends Node
 var current_handle: int = 0
 var leaderboard_handles: Dictionary[StringName, int] = {
 	"FeetTraveled": 0,
-	"AverageSpeed": 0
+	"AverageSpeed": 0,
+	"NumWins": 0
 	}
 
 # Need to connect to LeaderboardScoresDownloaded passing (Rank,Name,Score)
@@ -15,11 +16,13 @@ func _ready()-> void:
 	Steam.leaderboard_scores_downloaded.connect(_on_leaderboard_scores_downloaded)
 	
 	Steam.findLeaderboard( leaderboard_handles.keys()[0] )
+	get_handles_in_loop()
 
 
 func _on_leaderboard_find_result(new_handle: int, was_found: int) -> void:
 	if was_found != 1:
 		print("Leaderboard handle could not be found: %s" % was_found)
+		_read_leaderboard_data(current_handle)
 		return
 
 	current_handle = new_handle
@@ -32,13 +35,15 @@ func _on_leaderboard_find_result(new_handle: int, was_found: int) -> void:
 func get_handles_in_loop() -> void:
 	for this_leaderboard in leaderboard_handles.keys():
 		Steam.findLeaderboard(this_leaderboard)
+
 		await Steam.leaderboard_find_result
-		
-func _read_leaderboard_data() -> void:
+		_read_leaderboard_data(current_handle)
+
+func _read_leaderboard_data(current_handle) -> void:
 	# Parameters: Range Start, Range End, Request Type
 	# Steam.LEADERBOARD_DATA_REQUEST_GLOBAL fetches the top scores
 	Steam.downloadLeaderboardEntries(1, 10, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, current_handle)
-	
+
 
 func _on_leaderboard_scores_downloaded(message: String, result: Array) -> void:
 	for entry in result:
