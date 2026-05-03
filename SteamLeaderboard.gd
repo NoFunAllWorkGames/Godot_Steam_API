@@ -2,11 +2,11 @@ extends Node
 
 var current_handle: int = 0
 
-var leaderboards: Dictionary = {
-	"FeetTraveled": {},
-	"AverageSpeed": {},
-	"NumWins": {}
-}
+var leaderboards: Array = [
+	"FeetTraveled",
+	"AverageSpeed",
+	"NumWins"
+]
 
 # Need to connect to LeaderboardScoresDownloaded passing (Rank,Name,Score)
 var LeaderboardUserScore : PackedScene
@@ -20,7 +20,6 @@ func get_handles_in_loop() -> void:
 	for handle_name in leaderboards:
 		get_single_handle(handle_name)
 	
-# same as get_handles_in_loop but just as a specific single handle
 func get_single_handle(handle_name: String) -> void:
 	print("Finding leaderboard: %s" % handle_name)
 	
@@ -33,13 +32,10 @@ func get_single_handle(handle_name: String) -> void:
 
 func process_found_leaderboard(handle_id: int, success: int, handle_name: String):
 	if success == 1:
-		# 3. Store the handle_id in the dictionary
-		leaderboards[handle_name]["handle_id"] = handle_id
-		
-		# 4. Request the entries using the retrieved handle_id
+		# Request the actual leaderboard content
 		Steam.downloadLeaderboardEntries(1, 10, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, handle_id)
 		
-		# 5. Wait for the specific download signal
+		# Process the actual leaderboard content
 		var result = await Steam.leaderboard_scores_downloaded
 		var res_status = result[0]
 		var res_handle = result[1]
