@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b88s805ri1gxm" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="PackedScene" uid="uid://b8o2rmut2ws1e" path="res://Steam_Init/steam_init.tscn" id="2_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dps4mrx38evft" path="res://Leaderboard/leaderboard.tscn" id="3_fu7sn"]
+[ext_resource type="Script" uid="uid://da45jomv6lc8g" path="res://Leaderboard/SteamLeaderboard.gd" id="4_jix8l"]
 
 [node name="MainMenu" type="Control" unique_id=990598184]
 layout_mode = 3
@@ -26,5 +27,6 @@ layout_mode = 2
 
 [node name="Leaderboard" parent="TabContainer" unique_id=1860346214 instance=ExtResource("3_fu7sn")]
 layout_mode = 2
+script = ExtResource("4_jix8l")
 
 [connection signal="ready" from="." to="." method="_on_ready"]

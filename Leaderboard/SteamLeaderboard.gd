@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 var current_handle: int = 0
 
@@ -11,9 +11,14 @@ var leaderboards: Array = [
 # Need to connect to LeaderboardScoresDownloaded passing (Rank,Name,Score)
 var LeaderboardUserScore : PackedScene
 
-func _ready()-> void:
-	print("=== Start Steam Leaderboard Start ===")
-	get_single_handle("FeetTraveled")
+func _ready() -> void:
+	# Connect the internal visibility_changed signal to a local function
+	visibility_changed.connect(_on_visibility_changed)
+
+func _on_visibility_changed() -> void:
+	if is_visible_in_tree():
+		print("=== Start Steam Leaderboard Start ===")
+		get_single_handle("FeetTraveled")
 	
 # Optional starting point to iterate through all leaderboards
 func get_handles_in_loop() -> void:
