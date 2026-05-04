@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dps4mrx38evft"]
+
+[node name="Leaderboard" type="MarginContainer" unique_id=1860346214]
+visible = false
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=362467293]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="Label" type="Label" parent="GridContainer" unique_id=1388326739]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label2" type="Label" parent="GridContainer" unique_id=1537064865]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label3" type="Label" parent="GridContainer" unique_id=931198482]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label4" type="Label" parent="GridContainer" unique_id=972271803]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label5" type="Label" parent="GridContainer" unique_id=804612569]
+layout_mode = 2
+text = "TEST"
+
+[node name="Label6" type="Label" parent="GridContainer" unique_id=269845954]
+layout_mode = 2
+text = "TEST"

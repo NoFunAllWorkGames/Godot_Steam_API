@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://b8o2rmut2ws1e"]
+
+[ext_resource type="Script" uid="uid://dttoa5olp7y7u" path="res://Steam_Init/steam_init.gd" id="1_n1dx4"]
+
+[node name="Steam Init" type="MarginContainer" unique_id=781424900]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_n1dx4")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1326493865]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2067591051]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=611060266]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=945467127]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=54797820]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=112657621]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1516071906]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1968998637]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1291859142]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1729215165]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=995247389]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=2027954174]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=1407108127]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=49257966]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=1337058928]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=587853503]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer" unique_id=1054077009]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer6" unique_id=1592014017]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer6" unique_id=323039559]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer" unique_id=169821165]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer7" unique_id=1014734177]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer7" unique_id=1198482994]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer" unique_id=682633921]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer8" unique_id=1334298448]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer8" unique_id=88367646]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="VBoxContainer" unique_id=79778108]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer9" unique_id=2085219345]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer9" unique_id=797894015]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="VBoxContainer" unique_id=450135985]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer10" unique_id=552856935]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer10" unique_id=1036616981]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="VBoxContainer" unique_id=197447233]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer11" unique_id=1339490741]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer11" unique_id=1441296720]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="VBoxContainer" unique_id=1818939767]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer12" unique_id=1411677982]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer12" unique_id=1697141802]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="VBoxContainer" unique_id=268601165]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer13" unique_id=811613965]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer13" unique_id=965138250]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="VBoxContainer" unique_id=1787409125]
+layout_mode = 2
+
+[node name="key" type="Label" parent="VBoxContainer/HBoxContainer14" unique_id=2101152663]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer14" unique_id=638536965]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,7 +1,8 @@
 extends Control
 
-#TODO: Plug in script to variables in steam_code.gd
-@onready var Label1 = $TabContainer/DebugMenu/GridContainer/Label
+@onready var steam_init: Node = $"TabContainer/Steam Init"
 
-func _on_steam_init_steam_user_updated(res) -> void:
-	$TabContainer/DebugMenu/GridContainer/Label.text = res
+func _ready() -> void:
+	# This has to be always done or else steam won't work
+	# It could have been an autoload too, which I try to avoid
+	steam_init.initialize_steam()
