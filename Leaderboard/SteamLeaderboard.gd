@@ -9,7 +9,7 @@ var leaderboards: Array = [
 ]
 
 # Need to connect to LeaderboardScoresDownloaded passing (Rank,Name,Score)
-var LeaderboardUserScore : PackedScene
+const LeaderboardUserScore: PackedScene = preload("res://Leaderboard/leaderboard_user_score.tscn")
 
 func _ready() -> void:
 	# Connect the internal visibility_changed signal to a local function
@@ -63,6 +63,15 @@ func process_downloaded_leaderboard_scores(_res_status: String, _res_handle: int
 		var rank = entry['global_rank']
 		var steam_id = entry['steam_id']
 		var username = Steam.getFriendPersonaName(steam_id)
+		
+		# Create elements for the UI
+		var row = LeaderboardUserScore.instantiate()
+		$Panel/MarginContainer/VBoxContainer.add_child(row)
+		row.get_node("HBoxContainer/Rank").text = str(rank)
+		row.get_node("HBoxContainer/Name").text = str(username)
+		row.get_node("HBoxContainer/Score").text = str(score)
+		
+		# Debug output
 		print("Rank: %d | Name: %s | Score: %d" % [rank, username, score])
 		
 func upload_leaderboard_score(score: int, keep_best: bool, details: Array, this_leaderboard: int) -> void:
