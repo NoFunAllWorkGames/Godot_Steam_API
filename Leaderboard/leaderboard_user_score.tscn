@@ -12,10 +12,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Rank" type="RichTextLabel" parent="HBoxContainer" unique_id=2041467352]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 text = "test"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Name" type="RichTextLabel" parent="HBoxContainer" unique_id=1186387596]
 custom_minimum_size = Vector2(0, 30)

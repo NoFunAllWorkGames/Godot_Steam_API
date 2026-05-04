@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dn4hap5i10jwo"]
+
+[ext_resource type="PackedScene" uid="uid://cndrtp8vn6g5f" path="res://Achievements/achievement_panel.tscn" id="1_rs34d"]
+
+[node name="Achievements" type="MarginContainer" unique_id=1809448124]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="Panel" type="Panel" parent="." unique_id=220215438]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1490461371]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer" unique_id=764377838]
+layout_mode = 2
+columns = 2
+
+[node name="Control" parent="Panel/MarginContainer/GridContainer" unique_id=908220910 instance=ExtResource("1_rs34d")]
+layout_mode = 2
+
+[node name="Control2" parent="Panel/MarginContainer/GridContainer" unique_id=695153516 instance=ExtResource("1_rs34d")]
+layout_mode = 2

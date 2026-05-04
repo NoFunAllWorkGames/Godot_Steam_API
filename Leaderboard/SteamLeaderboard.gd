@@ -66,7 +66,7 @@ func process_downloaded_leaderboard_scores(_res_status: String, _res_handle: int
 		
 		# Create elements for the UI
 		var row = LeaderboardUserScore.instantiate()
-		$Panel/MarginContainer/VBoxContainer.add_child(row)
+		$Panel/MarginContainer/ScrollContainer/VBoxContainer.add_child(row)
 		row.get_node("HBoxContainer/Rank").text = str(rank)
 		row.get_node("HBoxContainer/Name").text = str(username)
 		row.get_node("HBoxContainer/Score").text = str(score)

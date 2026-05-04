@@ -22,15 +22,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=705149133]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer" unique_id=1160694907]
 layout_mode = 2
-theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=77556389]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer" unique_id=705149133]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Leaderboard"
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1229152011]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Rank" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=77556389]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Rank"
+
+[node name="Name" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1913117445]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Name"
+
+[node name="Score" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1152439919]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Score"
