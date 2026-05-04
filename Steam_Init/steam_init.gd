@@ -2,24 +2,12 @@ extends Node
 
 var app_id = 480
 
-var achievements: Dictionary[String, bool] = {
-	"ACH_TRAVEL_FAR_ACCUM": false,
-	"ACH_TRAVEL_FAR_SINGLE": false,
-	"ACH_WIN_100_GAMES": false
-	}
-var statistics: Dictionary[String, int] = {
-	"highscore": 0,
-	"health": 0,
-	"money": 0
-	}
-
 func initialize_steam() -> void:
 	var initialize_response: Dictionary = Steam.steamInitEx( 480, true )
 	print("Did Steam initialize?: %s" % initialize_response)
 
 	if initialize_response['status'] > Steam.STEAM_API_INIT_RESULT_OK:
 		print("Failed to initialize Steam, shutting down: %s" % initialize_response)
-
 
 	var app_installed_depots: Array = Steam.getInstalledDepots( app_id )
 	var app_languages: String = Steam.getAvailableGameLanguages()
@@ -95,25 +83,3 @@ func initialize_steam() -> void:
 	print("UI language: %s" % ui_language)
 	print("=== END Steam Init END ====")
 	print("")
-
-	print("=== START Steam Achievement Load ====")
-	load_steam_achievements()
-	print("=== END Steam Achievement Load ====")
-
-# Process achievements
-func load_steam_achievements() -> void:
-	for this_achievement in achievements.keys():
-		var steam_achievement: Dictionary = Steam.getAchievement(this_achievement)
-
-		# Does the achievement actually exist in the Steamworks back-end?
-		# It's not mentioned in the documentation but 'ret' = 'returned dictionary'
-		if not steam_achievement['ret']:
-			print("Steam does not have this achievement, ignoring it")
-			continue
-
-		achievements[this_achievement] = steam_achievement['achieved']
-
-	print("Steam achievements loaded")
-	for k in achievements:
-		var v = achievements[k]
-		print("Key: %s " % k, "Unlocked?: %s " % v)
