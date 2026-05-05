@@ -1,27 +1,50 @@
 Godot Steam API
----------------
+===============
+
+As most games will utilize Steam, this uses the most popular Steamworks SDK for Godot  
+Goal is to get familiar what is possible with Steamworks within Godot 
+It's created using Steams Spacewar example game  
+
+| Feature                        | Supported (AppID 480) | Implemented |
+| :----------------------------- | :-------------------: | :---------- |
+| **Steam Initialization**       |          ✅           | ✅          |
+| **Leaderboards**               |          ✅           | ✅          |
+| **Achievements**               |          ✅           | 🚧          |
+| **Stats**                      |          ✅           | ❌          |
+| **Rich Presence**              |          ✅           | ❌          |
+| **Steam Overlay**              |          ✅           | ❌          |
+| **Friends / Personas**         |          ✅           | ❌          |
+| **Lobbies**                    |          ✅           | ❌          |
+| **P2P Networking**             |          ✅           | ❌          |
+| **Workshop**                   |          ❌           | ❌          |
+| **Cloud Saves**                |          ❌           | ❌          |
+| **DLC / In-App Purchases**     |          ❌           | ❌          |
+| **Steam NetworkingSockets**    |          ❓           | ❌          |
+| **Remote Play**                |          ❓           | ❌          |
+| **User Authentication**        |          ❓           | ❌          |
+| **Steam Input**                |          ❓           | ❌          |
+| **Steam Utils**                |          ❓           | ❌          |
+| **Steam Screenshots**          |          ❓           | ❌          |
+| **Steam Music / Music Remote** |          ❓           | ❌          |
+| **Steam Video**                |          ❓           | ❌          |
+| **Steam HTML Surface**         |          ❓           | ❌          |
+| **Steam Game Search**          |          ❓           | ❌          |
+| **Steam Parties**              |          ❓           | ❌          |
 
 
 Steam Initialization
 --------------------
 
+Uses the local Steam installation  
+That means if you have steam installed, it will show your private account details  
+It displays the initialization variables  
 
+![Init Screenshot](Images/Init.jpg)
 
+Leaderboard
+-----------
 
+Supports displaying of current Leaderboard entries  
+Actually still lacks a way to update the players score via UI  
 
-I ordered in order I would approach the topics
-
-| Feature                    | Supported (AppID 480) | Limitations / Technical Notes                                       |
-| :------------------------- | :-------------------: | :------------------------------------------------------------------ |
-| **Steam Initialization**   |          ✅           | Requires Steam Client running; fails if user is offline.            |
-| **Leaderboards**           |          ✅           | Shared globally; stats are frequently reset or corrupted by others. |
-| **Achievements**           |          ✅           | Triggers successfully but stores data under the SpaceWar AppID.     |
-| **Rich Presence**          |          ✅           | Allows setting custom status strings (e.g., "In Main Menu").        |
-| **Stats**                  |          ✅           | Standard integer/float stats work for the current session.          |
-| **Steam Overlay**          |          ✅           | Functions fully; displays user as playing "SpaceWar".               |
-| **Friends / Personas**     |          ✅           | Can retrieve names, avatars, and status of existing friends.        |
-| **Lobbies**                |          ✅           | Functionally messy; you will see lobbies from all global testers.   |
-| **P2P Networking**         |          ✅           | Steam NetworkingSockets and Relay function for data transfer.       |
-| **Workshop**               |          ❌           | Requires unique AppID and configured Steamworks dashboard.          |
-| **Cloud Saves**            |          ❌           | Requires specific file path configuration in the Steam backend.     |
-| **DLC / In-App Purchases** |          ❌           | Microtransactions require a verified merchant account and AppID.    |
+![Leaderboard Screenshot](Images/Leaderboard.jpg)
