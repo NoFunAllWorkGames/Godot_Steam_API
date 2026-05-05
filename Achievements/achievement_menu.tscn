@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dn4hap5i10jwo"]
 
 [ext_resource type="Script" uid="uid://cbx6y5n18jr8k" path="res://Achievements/achievement_menu.gd" id="1_icroo"]
-[ext_resource type="PackedScene" uid="uid://cndrtp8vn6g5f" path="res://Achievements/achievement_panel.tscn" id="1_rs34d"]
 
 [node name="Achievements" type="MarginContainer" unique_id=1809448124]
 anchors_preset = 15
@@ -30,12 +29,9 @@ theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 14
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer" unique_id=764377838]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer" unique_id=643703846]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/ScrollContainer" unique_id=764377838]
 layout_mode = 2
 columns = 2
-
-[node name="Control" parent="Panel/MarginContainer/GridContainer" unique_id=908220910 instance=ExtResource("1_rs34d")]
-layout_mode = 2
-
-[node name="Control2" parent="Panel/MarginContainer/GridContainer" unique_id=695153516 instance=ExtResource("1_rs34d")]
-layout_mode = 2
