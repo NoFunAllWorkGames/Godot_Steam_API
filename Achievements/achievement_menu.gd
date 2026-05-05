@@ -38,22 +38,24 @@ func load_steam_achievements() -> void:
 
 		achievements[this_achievement] = steam_achievement['achieved']
 
-	for k in achievements:
-		var v = achievements[k]
+	for key in achievements:
+		var achievement_status = achievements[key]
 		var grid = achievementPanel.instantiate()
 		$Panel/MarginContainer/ScrollContainer/GridContainer.add_child(grid)
-		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = str("Key: %s" % k)
-		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Status").text = str("Unlocked?: %s" % v)
+		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = str("Key: %s" % key)
+		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Status").text = str("Unlocked?: %s" % achievement_status)
 		var icon = grid.get_node("MarginContainer/HBoxContainer/TextureRect")
-		load_achievement_icon(icon, k)
+		load_achievement_icon(icon, key)
 		
-		print("Key: %s " % k, "Unlocked?: %s " % v)
+		print("Key: %s " % key, "Unlocked?: %s " % achievement_status)
 
 func load_achievement_icon(icon: TextureRect, k) -> void:
 	var icon_handle: int = Steam.getAchievementIcon(k)
 
 	var icon_size: Dictionary = Steam.getImageSize(icon_handle)
 	var icon_buffer: Dictionary = Steam.getImageRGBA(icon_handle)
+	if not icon_buffer.has("buffer"):
+		return
 
 	var icon_image: Image = Image.create_from_data(icon_size.width, icon_size.height, false, Image.FORMAT_RGBA8, icon_buffer["buffer"])
 
