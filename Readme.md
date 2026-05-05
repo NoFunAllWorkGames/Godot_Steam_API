@@ -39,7 +39,7 @@ Uses the local Steam installation
 That means if you have steam installed, it will show your private account details  
 It displays the initialization variables  
 
-![Init Screenshot](Images/Init.jpg)
+<img width="1145" height="643" alt="Init" src="https://github.com/user-attachments/assets/c8ea4084-33fb-487f-8379-31c772a20e27" />
 
 Leaderboard
 -----------
@@ -47,4 +47,4 @@ Leaderboard
 Supports displaying of current Leaderboard entries  
 Actually still lacks a way to update the players score via UI  
 
-![Leaderboard Screenshot](Images/Leaderboard.jpg)
+<img width="1133" height="630" alt="Leaderboard" src="https://github.com/user-attachments/assets/05ead8a3-873d-479c-b136-a3d69788b271" />
