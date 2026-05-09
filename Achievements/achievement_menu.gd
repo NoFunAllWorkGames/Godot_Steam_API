@@ -26,7 +26,11 @@ func _on_visibility_changed() -> void:
 
 # Process achievements
 	# Does the achievement actually exist in the Steamworks back-end?
+	# https://partner.steamgames.com/doc/features/achievements/ach_guide
+	# https://partner.steamgames.com/doc/api/ISteamUserStats#GetAchievement
 	# It's not mentioned in the documentation but 'ret' = 'returned dictionary'
+	# https://godotsteam.com/classes/user_stats/?h=achiev#getachievement
+	# See Returns: dictionary -> Contains the following keys: -> ret
 func load_steam_achievements() -> void:
 	for this_achievement in achievements.keys():
 		var steam_achievement: Dictionary = Steam.getAchievement(this_achievement)
