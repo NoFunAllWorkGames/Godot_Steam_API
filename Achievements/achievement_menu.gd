@@ -12,14 +12,15 @@ var statistics: Dictionary[String, int] = {
 
 func _ready() -> void:
 	grid_container = $Panel/MarginContainer/ScrollContainer/GridContainer as GridContainer
-		visibility_changed.connect(_on_visibility_changed)
+	visibility_changed.connect(_on_visibility_changed)
+	Steam.user_achievement_icon_fetched.connect(_on_user_achievement_icon_fetched)
 
 func _on_visibility_changed() -> void:
-		print("=== START Steam Achievement Load ====")
+	print("=== START Steam Achievement Load ====")
 	clean_grid_container()
-		existing_achievements = get_all_achievements()
-		load_steam_achievements()
-		print("=== END Steam Achievement Load ====")
+	existing_achievements = get_all_achievements()
+	load_steam_achievements()
+	print("=== END Steam Achievement Load ====")
 
 func clean_grid_container() -> void:
 	for child in grid_container.get_children():
@@ -64,13 +65,16 @@ func load_steam_achievements() -> void:
 		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = str("Key: %s" % achievement_name)
 		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Status").text = str("Unlocked?: %s" % is_unlocked)
 		var iconRect = grid.get_node("MarginContainer/HBoxContainer/TextureRect")
-		load_achievement_icon(iconRect, achievement_name)
+		iconRect.name = achievement_name
+		load_achievement_icon_from_name(iconRect, achievement_name)
 
 		print("Key: %s " % achievement_name, "Unlocked?: %s " % is_unlocked)
 
-func load_achievement_icon(iconRect: TextureRect, achievement_name: String) -> void:
+func load_achievement_icon_from_name(iconRect: TextureRect, achievement_name: String) -> void:
 	var icon_handle: int = Steam.getAchievementIcon(achievement_name)
+	load_achievement_icon_from_handle(iconRect, icon_handle)
 
+func load_achievement_icon_from_handle(iconRect: TextureRect, icon_handle: int) -> void:
 	var icon_size: Dictionary = Steam.getImageSize(icon_handle)
 	var icon_buffer: Dictionary = Steam.getImageRGBA(icon_handle)
 	if not icon_buffer.has("buffer"):
@@ -80,3 +84,8 @@ func load_achievement_icon(iconRect: TextureRect, achievement_name: String) -> v
 
 	var icon_texture: ImageTexture = ImageTexture.create_from_image(icon_image)
 	iconRect.texture = icon_texture
+
+func _on_user_achievement_icon_fetched(game_id: int, achievement_name: String, achieved:bool, icon_handle: int) -> void:
+	print("Icon " + achievement_name + " late to the party! Adding it to the UI")
+	var iconRect = find_child(achievement_name, true, false) as TextureRect
+	load_achievement_icon_from_handle(iconRect, icon_handle)
