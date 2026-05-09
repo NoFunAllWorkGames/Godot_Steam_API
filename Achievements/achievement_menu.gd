@@ -1,7 +1,7 @@
 extends Control
 
 const achievementPanel: PackedScene = preload("res://Achievements/achievement_panel.tscn")
-
+var grid_container: GridContainer
 var existing_achievements: Array = []
 
 var statistics: Dictionary[String, int] = {
@@ -11,15 +11,20 @@ var statistics: Dictionary[String, int] = {
 	}
 
 func _ready() -> void:
+	grid_container = $Panel/MarginContainer/ScrollContainer/GridContainer as GridContainer
 		visibility_changed.connect(_on_visibility_changed)
 
 func _on_visibility_changed() -> void:
-	if is_visible_in_tree():
 		print("=== START Steam Achievement Load ====")
+	clean_grid_container()
 		existing_achievements = get_all_achievements()
 		load_steam_achievements()
 		print("=== END Steam Achievement Load ====")
 
+func clean_grid_container() -> void:
+	for child in grid_container.get_children():
+		grid_container.remove_child(child)
+		child.queue_free()
 
 func get_all_achievements() -> Array:
 	var achievement_list: Array = []
@@ -55,7 +60,7 @@ func load_steam_achievements() -> void:
 		var achievement_name = this_achievement["achievement_name"]
 		var is_unlocked = this_achievement["is_unlocked"]
 		var grid = achievementPanel.instantiate()
-		$Panel/MarginContainer/ScrollContainer/GridContainer.add_child(grid)
+		grid_container.add_child(grid)
 		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = str("Key: %s" % achievement_name)
 		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Status").text = str("Unlocked?: %s" % is_unlocked)
 		var iconRect = grid.get_node("MarginContainer/HBoxContainer/TextureRect")
