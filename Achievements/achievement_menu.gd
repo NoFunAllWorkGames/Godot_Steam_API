@@ -89,3 +89,14 @@ func _on_user_achievement_icon_fetched(game_id: int, achievement_name: String, a
 	print("Icon " + achievement_name + " late to the party! Adding it to the UI")
 	var iconRect = find_child(achievement_name, true, false) as TextureRect
 	load_achievement_icon_from_handle(iconRect, icon_handle)
+
+
+func _on_refresh_pressed() -> void:
+	# Remove old entries
+	clean_grid_container()
+	
+	# Create timer to wait (not actually required but using to showcase a fetch from server)
+	await get_tree().create_timer(1.0).timeout
+	
+	# Load achievements
+	load_steam_achievements()

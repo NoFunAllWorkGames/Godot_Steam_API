@@ -35,3 +35,22 @@ layout_mode = 2
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/ScrollContainer" unique_id=764377838]
 layout_mode = 2
 columns = 2
+
+[node name="Refresh" type="Button" parent="Panel" unique_id=1029001233]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.93200004
+anchor_top = 0.95000005
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.567993
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "REFRESH"
+
+[connection signal="pressed" from="Panel/Refresh" to="." method="_on_refresh_pressed"]
