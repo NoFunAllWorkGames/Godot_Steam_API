@@ -1,7 +1,7 @@
 extends Control
 
 var current_handle: int = 0
-
+var container: VBoxContainer
 var leaderboards: Array = [
 	"FeetTraveled",
 	"AverageSpeed",
@@ -11,14 +11,17 @@ var leaderboards: Array = [
 # Need to connect to LeaderboardScoresDownloaded passing (Rank,Name,Score)
 const LeaderboardUserScore: PackedScene = preload("res://Leaderboard/leaderboard_user_score.tscn")
 
-func _ready() -> void:
+func _ready()-> void:
+	container = $Panel/MarginContainer/ScrollContainer/VBoxContainer as VBoxContainer
 	# Connect the internal visibility_changed signal to a local function
 	visibility_changed.connect(_on_visibility_changed)
 
 func _on_visibility_changed() -> void:
 	if is_visible_in_tree():
 		print("=== Start Steam Leaderboard Start ===")
+		clean_container()
 		get_single_handle("FeetTraveled")
+		print("=== END Steam Leaderboard Load ====")
 	
 # Optional starting point to iterate through all leaderboards
 func get_handles_in_loop() -> void:
@@ -89,3 +92,14 @@ func upload_leaderboard_score(score: int, keep_best: bool, details: Array, this_
 		print("  score_changed: ", res_score.score_changed)
 		print("  global_rank_new: ", res_score.global_rank_new)
 		print("  global_rank_prev: ", res_score.global_rank_prev)
+
+func clean_container() -> void:
+	# Skip the first child because it is the header
+	var i = 0
+	for child in container.get_children():
+		if i == 0:
+			i+=1
+			continue
+		container.remove_child(child)
+		child.queue_free()
+		i+=1
