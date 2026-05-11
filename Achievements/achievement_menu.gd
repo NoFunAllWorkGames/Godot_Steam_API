@@ -4,6 +4,9 @@ const achievementPanel: PackedScene = preload("res://Achievements/achievement_pa
 var grid_container: GridContainer
 var existing_achievements: Array = []
 
+signal setAchievementSignal
+signal clearAchievementSignal
+
 var statistics: Dictionary[String, int] = {
 	"highscore": 0,
 	"health": 0,
@@ -60,8 +63,7 @@ func load_steam_achievements() -> void:
 	for this_achievement in existing_achievements:
 		var achievement_name = this_achievement["achievement_name"]
 		var is_unlocked = this_achievement["is_unlocked"]
-		var grid = achievementPanel.instantiate()
-		grid_container.add_child(grid)
+		var grid = create_achievement_panel_node(achievement_name)
 		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = str("Key: %s" % achievement_name)
 		grid.get_node("MarginContainer/HBoxContainer/VBoxContainer/Status").text = str("Unlocked?: %s" % is_unlocked)
 		var iconRect = grid.get_node("MarginContainer/HBoxContainer/TextureRect")
@@ -69,6 +71,19 @@ func load_steam_achievements() -> void:
 		load_achievement_icon_from_name(iconRect, achievement_name)
 
 		print("Key: %s " % achievement_name, "Unlocked?: %s " % is_unlocked)
+		
+func create_achievement_panel_node(achievement_name :String) -> Panel:
+	# Actually create the achievement panel node
+	var grid = achievementPanel.instantiate()
+	grid_container.add_child(grid)
+	grid.name = achievement_name
+	# Just shortcut for the Set and Clear buttons
+	var setButton = grid.get_node("MarginContainer/HBoxContainer/ButtonVBoxContainer/Set")
+	var clearButton = grid.get_node("MarginContainer/HBoxContainer/ButtonVBoxContainer/Clear")
+	# Connect the signals to those buttons
+	setButton.pressed.connect(_on_set_Achievement.bind(achievement_name))
+	clearButton.pressed.connect(_on_clear_Achievement.bind(achievement_name))
+	return grid
 
 func load_achievement_icon_from_name(iconRect: TextureRect, achievement_name: String) -> void:
 	var icon_handle: int = Steam.getAchievementIcon(achievement_name)
@@ -89,7 +104,14 @@ func _on_user_achievement_icon_fetched(game_id: int, achievement_name: String, a
 	print("Icon " + achievement_name + " late to the party! Adding it to the UI")
 	var iconRect = find_child(achievement_name, true, false) as TextureRect
 	load_achievement_icon_from_handle(iconRect, icon_handle)
-
+	
+func _on_set_Achievement(name: String):
+	Steam.setAchievement(name)
+	_on_refresh_pressed()
+	
+func _on_clear_Achievement(name: String):
+	Steam.clearAchievement(name)
+	_on_refresh_pressed()
 
 func _on_refresh_pressed() -> void:
 	# Remove old entries

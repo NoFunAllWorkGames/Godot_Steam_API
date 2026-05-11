@@ -46,3 +46,17 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "STATUS_TEXT"
 autowrap_mode = 0
+
+[node name="ButtonVBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1664858528]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Set" type="Button" parent="MarginContainer/HBoxContainer/ButtonVBoxContainer" unique_id=137503460]
+layout_mode = 2
+text = "Set"
+
+[node name="Clear" type="Button" parent="MarginContainer/HBoxContainer/ButtonVBoxContainer" unique_id=718630946]
+layout_mode = 2
+text = "Clear"
