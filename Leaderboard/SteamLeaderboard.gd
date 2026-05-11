@@ -4,9 +4,14 @@ var current_handle: int = 0
 var container: VBoxContainer
 var leaderboards: Array = [
 	"FeetTraveled",
+	"MaxFeetTraveled",
 	"AverageSpeed",
-	"NumWins"
+	"NumWins",
+	"NumGames",
+	"NumLosses"
 ]
+@onready var option_button: OptionButton = $Panel/MarginContainer/ScrollContainer/VBoxContainer/Controls/OptionButton
+
 
 # Need to connect to LeaderboardScoresDownloaded passing (Rank,Name,Score)
 const LeaderboardUserScore: PackedScene = preload("res://Leaderboard/leaderboard_user_score.tscn")
@@ -15,19 +20,25 @@ func _ready()-> void:
 	container = $Panel/MarginContainer/ScrollContainer/VBoxContainer as VBoxContainer
 	# Connect the internal visibility_changed signal to a local function
 	visibility_changed.connect(_on_visibility_changed)
+	populate_option_button()
+	option_button.item_selected.connect(_on_option_button_entry_selected)
 
+func _on_option_button_entry_selected(index:int) -> void:
+	var selection = option_button.get_item_text(index)
+	clean_container()
+	get_single_handle(selection)
+	
+func populate_option_button() -> void:
+	for leaderboard in leaderboards:
+		option_button.add_item((leaderboard))
+	
 func _on_visibility_changed() -> void:
 	if is_visible_in_tree():
 		print("=== Start Steam Leaderboard Start ===")
 		clean_container()
 		get_single_handle("FeetTraveled")
 		print("=== END Steam Leaderboard Load ====")
-	
-# Optional starting point to iterate through all leaderboards
-func get_handles_in_loop() -> void:
-	for handle_name in leaderboards:
-		get_single_handle(handle_name)
-	
+
 func get_single_handle(handle_name: String) -> void:
 	print("Finding leaderboard: %s" % handle_name)
 	

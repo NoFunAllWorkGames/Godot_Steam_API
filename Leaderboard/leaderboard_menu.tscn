@@ -34,6 +34,19 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
+[node name="Controls" type="HBoxContainer" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=298698178]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/Controls" unique_id=1489057041]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Select Leaderboard:"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/Controls" unique_id=47999764]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1229152011]
 layout_mode = 2
 theme_override_constants/separation = 14
