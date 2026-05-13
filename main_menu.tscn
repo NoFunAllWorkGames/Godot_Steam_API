@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxwyqsnr1on2h" path="res://Leaderboard/leaderboard_menu.tscn" id="3_jix8l"]
 [ext_resource type="Script" uid="uid://da45jomv6lc8g" path="res://Leaderboard/SteamLeaderboard.gd" id="4_jix8l"]
 [ext_resource type="PackedScene" uid="uid://dn4hap5i10jwo" path="res://Achievements/achievement_menu.tscn" id="5_glbon"]
+[ext_resource type="PackedScene" uid="uid://oafemeel06gc" path="res://Apps/Apps.tscn" id="6_nlkkf"]
 
 [node name="MainMenu" type="Control" unique_id=990598184]
 layout_mode = 3
@@ -44,5 +45,10 @@ metadata/_tab_index = 1
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="Apps" parent="TabContainer" unique_id=1842538428 instance=ExtResource("6_nlkkf")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -9,8 +9,8 @@ It's created using Steams Spacewar example game
 | :----------------------------- | :-------------------: | :---------- |
 | **Steam Initialization**       |          ✅           | ✅          |
 | **Leaderboards**               |          ✅           | ✅          |
-| **Achievements**               |          ✅           | 🚧          |
-| **Stats**                      |          ✅           | ❌          |
+| **Achievements/Stats**         |          ✅           | ✅          |
+| **Apps/DLC**      		     |          ✅           | ✅          |
 | **Rich Presence**              |          ✅           | ❌          |
 | **Steam Overlay**              |          ✅           | ❌          |
 | **Friends / Personas**         |          ✅           | ❌          |
