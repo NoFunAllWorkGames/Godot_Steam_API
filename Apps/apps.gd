@@ -1,7 +1,8 @@
 extends MarginContainer
 
 var container: VBoxContainer
-var panel: HBoxContainer
+var panel: PackedScene
+const Utils = preload("res://utils.gd")
 
 var spacewarFiles :Array = [
 	"spacewar.exe",
@@ -17,7 +18,8 @@ func _on_visibility_changed():
 	if is_visible_in_tree():
 		print("=== Start Steam Apps Start ===")
 		container = $ScrollContainer/VBoxContainer
-		panel = $ScrollContainer/VBoxContainer/HBoxContainer
+		panel = preload("res://Apps/apps_panel_entry.tscn")
+		Utils.clean_container(container)
 		getAppInfos()
 		print("=== END Steam Apps Load ====")
 
@@ -82,7 +84,7 @@ func getAppInfos():
 
 # Create a new panel and assigns the values
 func createNewPanelEntry(entry_name:String, entry_value:String) -> void:
-	var entry_panel = panel.duplicate() as HBoxContainer
+	var entry_panel = panel.instantiate() as HBoxContainer
 	var name_label: Label = entry_panel.get_node("Name")
 	name_label.text = entry_name
 	name_label.name = entry_name

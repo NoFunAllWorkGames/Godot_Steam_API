@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://6io7bhvwpefo"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=2076770596]
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="." unique_id=258540265]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="." unique_id=888682739]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="." unique_id=663313023]
+layout_mode = 2

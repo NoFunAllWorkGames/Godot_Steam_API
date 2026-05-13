@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://oafemeel06gc"]
 
 [ext_resource type="Script" uid="uid://dw1ptwrdjg4cm" path="res://Apps/apps.gd" id="1_c87vv"]
+[ext_resource type="PackedScene" uid="uid://6io7bhvwpefo" path="res://Apps/apps_panel_entry.tscn" id="2_pf8y5"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=1842538428]
 anchors_preset = 15
@@ -13,6 +14,7 @@ size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 script = ExtResource("1_c87vv")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1588387665]
@@ -23,15 +25,5 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=971320641]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Name" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=298267194]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=414938846]
-layout_mode = 2
-
-[node name="Key" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=30547254]
+[node name="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=2076770596 instance=ExtResource("2_pf8y5")]
 layout_mode = 2
