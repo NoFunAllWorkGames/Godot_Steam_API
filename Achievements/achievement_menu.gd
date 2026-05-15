@@ -1,6 +1,7 @@
 extends Control
 
 const achievementPanel: PackedScene = preload("res://Achievements/achievement_panel.tscn")
+const Utils = preload("res://utils.gd")
 var grid_container: GridContainer
 var existing_achievements: Array = []
 
@@ -13,22 +14,23 @@ var statistics: Dictionary[String, int] = {
 	"money": 0
 	}
 
+
 func _ready() -> void:
 	grid_container = $Panel/MarginContainer/ScrollContainer/GridContainer as GridContainer
 	visibility_changed.connect(_on_visibility_changed)
+
 	Steam.user_achievement_icon_fetched.connect(_on_user_achievement_icon_fetched)
+
 
 func _on_visibility_changed() -> void:
 	print("=== START Steam Achievement Load ====")
-	clean_grid_container()
+	Utils.clean_container(grid_container)
+	#clean_grid_container()
+	
 	existing_achievements = get_all_achievements()
 	load_steam_achievements()
 	print("=== END Steam Achievement Load ====")
 
-func clean_grid_container() -> void:
-	for child in grid_container.get_children():
-		grid_container.remove_child(child)
-		child.queue_free()
 
 func get_all_achievements() -> Array:
 	var achievement_list: Array = []
@@ -52,13 +54,13 @@ func get_all_achievements() -> Array:
 
 	return achievement_list
 
-# Process achievements
-	# Does the achievement actually exist in the Steamworks back-end?
-	# https://partner.steamgames.com/doc/features/achievements/ach_guide
-	# https://partner.steamgames.com/doc/api/ISteamUserStats#GetAchievement
-	# It's not mentioned in the documentation but 'ret' = 'returned dictionary'
-	# https://godotsteam.com/classes/user_stats/?h=achiev#getachievement
-	# See Returns: dictionary -> Contains the following keys: -> ret
+## Process achievements
+	## Does the achievement actually exist in the Steamworks back-end?
+	## https://partner.steamgames.com/doc/features/achievements/ach_guide
+	## https://partner.steamgames.com/doc/api/ISteamUserStats#GetAchievement
+	## It's not mentioned in the documentation but 'ret' = 'returned dictionary'
+	## https://godotsteam.com/classes/user_stats/?h=achiev#getachievement
+	## See Returns: dictionary -> Contains the following keys: -> ret
 func load_steam_achievements() -> void:
 	for this_achievement in existing_achievements:
 		var achievement_name = this_achievement["achievement_name"]
@@ -71,23 +73,29 @@ func load_steam_achievements() -> void:
 		load_achievement_icon_from_name(iconRect, achievement_name)
 
 		print("Key: %s " % achievement_name, "Unlocked?: %s " % is_unlocked)
-		
+
+
 func create_achievement_panel_node(achievement_name :String) -> Panel:
 	# Actually create the achievement panel node
 	var grid = achievementPanel.instantiate()
 	grid_container.add_child(grid)
 	grid.name = achievement_name
+
 	# Just shortcut for the Set and Clear buttons
 	var setButton = grid.get_node("MarginContainer/HBoxContainer/ButtonVBoxContainer/Set")
 	var clearButton = grid.get_node("MarginContainer/HBoxContainer/ButtonVBoxContainer/Clear")
+
 	# Connect the signals to those buttons
 	setButton.pressed.connect(_on_set_Achievement.bind(achievement_name))
 	clearButton.pressed.connect(_on_clear_Achievement.bind(achievement_name))
+
 	return grid
+
 
 func load_achievement_icon_from_name(iconRect: TextureRect, achievement_name: String) -> void:
 	var icon_handle: int = Steam.getAchievementIcon(achievement_name)
 	load_achievement_icon_from_handle(iconRect, icon_handle)
+
 
 func load_achievement_icon_from_handle(iconRect: TextureRect, icon_handle: int) -> void:
 	var icon_size: Dictionary = Steam.getImageSize(icon_handle)
@@ -115,7 +123,7 @@ func _on_clear_Achievement(name: String):
 
 func _on_refresh_pressed() -> void:
 	# Remove old entries
-	clean_grid_container()
+	Utils.clean_container(grid_container)
 	
 	# Create timer to wait (not actually required but using to showcase a fetch from server)
 	await get_tree().create_timer(1.0).timeout
