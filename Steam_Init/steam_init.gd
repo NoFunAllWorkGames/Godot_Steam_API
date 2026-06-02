@@ -83,3 +83,7 @@ func initialize_steam() -> void:
 	print("UI language: %s" % ui_language)
 	print("=== END Steam Init END ====")
 	print("")
+
+#TODO: Tried to do some rich presence testing - not realistically doable without steam dev access 
+#func set_rich_presence(_token: String) -> void:
+	#Steam.setRichPresence("steam_display", "#Status_AtMainMenu")
